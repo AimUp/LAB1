@@ -11,4 +11,8 @@ public class ListaPelikulak {
 		
 	}
 	
+	public ArrayList<Pelikula> getListaP(){
+		return listaP;
+	}
+	
 }

@@ -17,5 +17,4 @@ public class Aktore {
 	public ArrayList<Pelikula> getListaP(){
 		return listaP;
 	}
-	
 }
