@@ -13,4 +13,5 @@ public class ListaAktoreak {
 	public ArrayList<Aktore> getListA(){
 		return listaA;
 	}
+	
 }
