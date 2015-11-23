@@ -1,4 +1,4 @@
-package org.dea.packlab1;
+package org.dea.packlaborategi3;
 
 public class Pelikula {
 	
