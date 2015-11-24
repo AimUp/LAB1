@@ -5,12 +5,14 @@ import java.io.*;
 
 public class Teklatua {
 
+	//ATRIBUTUAK
 	private ListaPelikulak listaP;
 	private ListaAktoreak listaA;
 	
 	private String fitxategiarenHelbidea(){
 		String itzuli;
 		System.out.println("Idatzi kargatu nahi den fitxategiaren helbidea:");
+		System.out.println("Adibidez: C://aktore-lista");
 		Scanner helbidea = new Scanner(System.in);
 		itzuli = helbidea.nextLine();
 		return itzuli;
