@@ -67,7 +67,7 @@ public class Teklatua {
 		}
 	}
 	
-	private void izenakEskatu(){
+	public String[] izenakEskatu(){
 		String izen1, izen2;
 		Scanner sc = new Scanner(System.in);
 		
@@ -82,6 +82,7 @@ public class Teklatua {
 		
 		izenak[0] = izen1;
 		izenak[1] = izen2;
+		return izenak;
 	}
 	
 	private int zenbakiaSartu(){
@@ -129,7 +130,7 @@ public class Teklatua {
 		
 		if(menuZenb == 1){
 			boolean konektatuak;
-			izenakEskatu();
+			izenak = izenakEskatu();
 			konektatuak = metodo2.konektaturikDaude(izenak[0], izenak[1]);
 			if(konektatuak){
 				System.out.println("AKTOREAK KONEKTATURIK DAUDE!");

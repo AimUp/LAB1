@@ -60,15 +60,21 @@ public class Graph2 {
 	}
 	
 	public boolean konektaturikDaude(String a1, String a2){
-		Queue<Integer> aztertuGabeak = new LinkedList<Integer>();
-		
-		int pos1 = th.get(a1);
-		int pos2 = th.get(a2);
 		boolean aurkitua = false;
-		boolean[] aztertuak = new boolean[th.size()];
-
-                 // KODEA OSATU
+		Queue<Integer> aztertuGabeak = new LinkedList<Integer>();
+		if(!th.containsKey(a1) || !th.containsKey(a2)){
+			System.out.println("Aktoreetako bat ez dago datu basean, sartu aktoreak berriro.");
+			String[] izenak = new String[2];
+			izenak = Teklatua.getTeklatua().izenakEskatu();
+			konektaturikDaude(izenak[0], izenak[2]);
+		}
+		else{
+			int pos1 = th.get(a1);
+			int pos2 = th.get(a2);
+			boolean[] aztertuak = new boolean[th.size()];
 		
+		 // KODEA OSATU
+		}
 		return aurkitua;
 
 	}

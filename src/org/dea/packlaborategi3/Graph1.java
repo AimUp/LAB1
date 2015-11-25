@@ -31,7 +31,7 @@ public class Graph1 {
 		}
 	}
 	
-	public boolean konektatuta(String a1, String a2){
+	/*public boolean konektatuta(String a1, String a2){
         boolean konektatuak = false;
         Ilara<Integer> aztertuGabeak = new;
         aztertuGabeak.insert(h);
@@ -48,5 +48,5 @@ public class Graph1 {
         	}
         }
 		return konektatuak;
-	}
+	}*/
 }
