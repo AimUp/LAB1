@@ -9,9 +9,17 @@ public class Graph1 {
 	public void grafoaSortu(ArrayList<Aktore> lAktoreak){
 	// Post: aktoreen zerrendatik grafoa sortzen du
 	//       Adabegiak aktoreen izenak eta pelikulen izenburuak dira 
-           
-            // KODEA OSATU
+        
+            for(Aktore a: lAktoreak){
+            	ArrayList<String> stringLista = new ArrayList<String>();
+            	for(int i=0; i < a.getListaP().size(); i++){
+            		Pelikula hunekoa = a.getListaP().get(i);
+            		stringLista.add(hunekoa.getIzenburua());
+            	}
+            	g.put(a.getIzena(), stringLista);
+            } 	
 	}
+	
 	public void print(){
 		int i = 1;
 		for (String s: g.keySet()){

@@ -18,4 +18,8 @@ public class Aktore {
 	public ArrayList<Pelikula> getListaP(){
 		return listaP;
 	}
+	
+	public void gehituPelikula(Pelikula pPeli){
+		listaP.add(pPeli);
+	}
 }

@@ -10,8 +10,8 @@ public class ListaAktoreak {
 		
 	}
 	
-	public ArrayList<Aktore> getListA(){
-		return listaA;
+	public void gehituAktorea(Aktore pAktor){
+		listaA.add(pAktor);
 	}
 	
 }

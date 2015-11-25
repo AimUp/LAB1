@@ -4,15 +4,22 @@ import java.util.*;
 
 public class ListaPelikulak {
 
-	private ArrayList<Pelikula> listaP;
-	
+	private HashMap<String, Pelikula> hashP;
 	
 	public ListaPelikulak(){
-		
+		hashP = new HashMap<String, Pelikula>();
 	}
 	
-	public ArrayList<Pelikula> getListaP(){
-		return listaP;
+	public boolean contains(String pKey){
+		return hashP.containsKey(pKey);
+	}
+	
+	public Pelikula getPeli(String pKey){
+		return hashP.get(pKey);
+	}
+	
+	public void addHash(String pKey, Pelikula pPeli){
+		hashP.put(pKey, pPeli);
 	}
 	
 }

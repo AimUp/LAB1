@@ -14,11 +14,11 @@ public class Graph2 {
 		
 		// 1. pausoa: th bete
 	 	int kont = 0;
-		for (Aktore a: lAktoreak){
+		for(Aktore a: lAktoreak){
 			th.put(a.getIzena(), kont);
 			kont++;
 			for(Pelikula p: a.getListaP()){
-				if (!th.containsKey(p.getIzenburua())){
+				if(!th.containsKey(p.getIzenburua())){
 					th.put(p.getIzenburua(), kont);
 					kont++;
 				}
@@ -26,11 +26,13 @@ public class Graph2 {
 
             // 2. pausoa: keys bete
 			keys = new String[th.size()];
-			for (String k: th.keySet()) keys[th.get(k)] = k;
+			for(String k: th.keySet()){
+				keys[th.get(k)] = k;
+			}
 
             // 3. pausoa: adjLista bete
 			adjList = (ArrayList<Integer>[])new ArrayList[th.size()];
-			ArrayList<Integer> nireArrayList = new ArrayList();
+			ArrayList<Integer> nireArrayList = new ArrayList<Integer>();
 			int pos = 0;
 			adjList[pos] = nireArrayList;
 		}
