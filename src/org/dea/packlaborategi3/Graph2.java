@@ -7,7 +7,7 @@ public class Graph2 {
       HashMap<String, Integer> th;
       String[] keys;
       ArrayList<Integer>[] adjList;
-	
+    
 	public void grafoaSortu(ArrayList<Aktore> lAktoreak){
 		// Post: aktoreen zerrendatik grafoa sortzen du
 		//       Adabegiak aktoreen izenak eta pelikulen izenburuak dira 
@@ -59,7 +59,7 @@ public class Graph2 {
 	   }
 	}
 	
-	public boolean estanConectados(String a1, String a2){
+	public boolean konektaturikDaude(String a1, String a2){
 		Queue<Integer> aztertuGabeak = new LinkedList<Integer>();
 		
 		int pos1 = th.get(a1);

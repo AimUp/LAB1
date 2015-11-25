@@ -9,11 +9,16 @@ public class Teklatua {
 	private ListaPelikulak listaP;
 	private ListaAktoreak listaA;
 	private static Teklatua nireTeklatua = null;
-	
+	private String[] izenak;
+	private Graph1 metodo1;
+	private Graph2 metodo2;
+	private Scanner sc;
 	
 	private Teklatua(){
 		listaA = new ListaAktoreak();
 		listaP = new ListaPelikulak();
+		izenak = new String[2];
+		sc = new Scanner(System.in);
 	}
 	
 	public static synchronized Teklatua getTeklatua(){
@@ -62,10 +67,9 @@ public class Teklatua {
 		}
 	}
 	
-	public String[] izenakEskatu(){
-		Scanner sc = new Scanner(System.in);
+	private void izenakEskatu(){
 		String izen1, izen2;
-		String[] arraya = new String[2];
+		Scanner sc = new Scanner(System.in);
 		
 		System.out.println("Bi aktore konektatuta dauden jakiteko bi akotoreren izenak beharko ditugu.");
 		System.out.println("Idatzi lehenengo aktorearen izena:");
@@ -76,9 +80,56 @@ public class Teklatua {
 		
 		izen2 = sc.nextLine();
 		
-		arraya[1] = izen1;
-		arraya[2] = izen2;
-		return arraya;
+		izenak[0] = izen1;
+		izenak[1] = izen2;
+	}
+	
+	private int zenbakiaSartu(){
+		int zenb;
+		zenb = sc.nextInt();
+		
+		return zenb;
+	}
+	
+	private String letraSartu(){
+		String letra;
+		letra = sc.nextLine();
+		
+		return letra;
+	}
+	
+	public void menua(){
+		Scanner sc = new Scanner(System.in);
+		int menuZenb;
+		String letra;
+		
+		System.out.println("Haukeratu egin nahi duzun eragiketa:");
+		System.out.println();
+		System.out.println("1-> Bi aktore konektatuta dauden jakin.");
+		
+		menuZenb = sc.nextInt();
+		if(menuZenb == 1){
+			izenakEskatu();
+			boolean konektatuak;
+			konektatuak = metodo2.konektaturikDaude(izenak[0], izenak[1]);
+			if(konektatuak){
+				System.out.println("AKTOREAK KONEKTATURIK DAUDE!");
+			}
+			else{
+				System.out.println("Aktoreak ez daude konektaturik.");
+			}
+		}
+		
+		System.out.println("Beste eragiketarik egin nahi?");
+		System.out.println("B-> Bai");
+		System.out.println("E-> Ez");
+		letra = sc.nextLine();
+		if(letra == "B" || letra == "b"){
+			nireTeklatua.menua();
+		}
+		else if(letra != "E" || letra != "e"){
+			System.out.println("Letra ez egokia.");
+		}
 	}
 	
 	
