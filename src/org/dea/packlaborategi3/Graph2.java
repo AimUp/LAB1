@@ -14,6 +14,7 @@ public class Graph2 {
 		
 		// 1. pausoa: th bete
 	 	int kont = 0;
+	 	th = new HashMap<String, Integer>();
 		for(Aktore a: lAktoreak){
 			th.put(a.getIzena(), kont);
 			kont++;
@@ -32,9 +33,20 @@ public class Graph2 {
 
             // 3. pausoa: adjLista bete
 			adjList = (ArrayList<Integer>[])new ArrayList[th.size()];
-			ArrayList<Integer> nireArrayList = new ArrayList<Integer>();
-			int pos = 0;
-			adjList[pos] = nireArrayList;
+			for(int i=0; i<th.size(); i++){
+				adjList[i] = new ArrayList<Integer>();
+			}
+			for(int i=0; i<lAktoreak.size(); i++){
+				Aktore nireAktorea = lAktoreak.get(i);
+				ArrayList<Pelikula> nireListaP = nireAktorea.getListaP();
+				int aktoreZenb = th.get(nireAktorea.getIzena());
+				for(int j=0; j<nireListaP.size(); j++){
+					int pelikulaZenb = th.get(nireListaP.get(j).getIzenburua());
+					adjList[aktoreZenb].add(pelikulaZenb);
+					adjList[pelikulaZenb].add(aktoreZenb);
+				}
+			}
+		
 		}
 	}
 	

@@ -14,4 +14,8 @@ public class ListaAktoreak {
 		listaA.add(pAktor);
 	}
 	
+	public ArrayList<Aktore> getLista(){
+		return listaA;
+	}
+	
 }
