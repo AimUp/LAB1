@@ -86,31 +86,50 @@ public class Teklatua {
 	
 	private int zenbakiaSartu(){
 		int zenb;
-		zenb = sc.nextInt();
 		
+		System.out.println("1-> Bi aktore konektatuta dauden jakin.");
+		System.out.println("2-> ...");
+
+		System.out.println("0-> Irten.");
+		
+		
+		zenb = sc.nextInt();
+		if(0>zenb || 2<zenb){
+			System.out.println("Zenbaki okerra sartu da. Aukeratu menuko zenbaki bat:");
+			zenb = zenbakiaSartu();
+		}
 		return zenb;
 	}
 	
-	private String letraSartu(){
+	private void letraSartu(){
 		String letra;
-		letra = sc.nextLine();
 		
-		return letra;
+		System.out.println("Beste eragiketarik egin nahi?");
+		System.out.println("B-> Bai");
+		System.out.println("E-> Ez");
+		
+		letra = sc.nextLine();
+		if(letra == "B" || letra == "b"){
+			nireTeklatua.menua();
+		}
+		else if(letra != "E" || letra != "e"){
+			System.out.println("Letra ez egokia, berriro erantzun.");
+			letraSartu();
+		}
 	}
 	
 	public void menua(){
 		Scanner sc = new Scanner(System.in);
 		int menuZenb;
-		String letra;
+		String menuLetra;
 		
-		System.out.println("Haukeratu egin nahi duzun eragiketa:");
+		System.out.println("Aukeratu egin nahi duzun eragiketa:");
 		System.out.println();
-		System.out.println("1-> Bi aktore konektatuta dauden jakin.");
+		menuZenb = zenbakiaSartu();
 		
-		menuZenb = sc.nextInt();
 		if(menuZenb == 1){
-			izenakEskatu();
 			boolean konektatuak;
+			izenakEskatu();
 			konektatuak = metodo2.konektaturikDaude(izenak[0], izenak[1]);
 			if(konektatuak){
 				System.out.println("AKTOREAK KONEKTATURIK DAUDE!");
@@ -119,17 +138,11 @@ public class Teklatua {
 				System.out.println("Aktoreak ez daude konektaturik.");
 			}
 		}
+		if(menuZenb == 2){
+			//EGITEKO
+		}
+		letraSartu();
 		
-		System.out.println("Beste eragiketarik egin nahi?");
-		System.out.println("B-> Bai");
-		System.out.println("E-> Ez");
-		letra = sc.nextLine();
-		if(letra == "B" || letra == "b"){
-			nireTeklatua.menua();
-		}
-		else if(letra != "E" || letra != "e"){
-			System.out.println("Letra ez egokia.");
-		}
 	}
 	
 	
