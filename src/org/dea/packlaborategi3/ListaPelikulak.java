@@ -22,4 +22,13 @@ public class ListaPelikulak {
 		hashP.put(pKey, pPeli);
 	}
 	
+	public void pelikulaKendu (String pIzen){
+		if(hashP.containsKey(pIzen)){
+			hashP.remove(pIzen);
+		}
+		else{
+			System.out.println("Pelikula hau ez dago zerrendan.");
+		}
+	}
+	
 }

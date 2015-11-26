@@ -9,8 +9,6 @@ public class Teklatua {
 	private ListaAktoreak listaA;
 	private static Teklatua nireTeklatua = null;
 	private String[] izenak;
-	//private Graph1 metodo1;
-	//private Graph2 metodo2;
 	private Scanner sc;
 	
 	private Teklatua(){
@@ -37,10 +35,12 @@ public class Teklatua {
 	}
 	
 	public void listaKargatu(){
-		int kont = 0;
 		try{
 			Scanner fitxategia = new Scanner(new FileReader(fitxategiarenHelbidea()));
 			String linea;
+			System.out.println();
+			System.out.println();
+			System.out.println("Datuak kargatzen diren bitartean itzaron...");
 			while(fitxategia.hasNext()){
 				linea = fitxategia.nextLine();
 				String[] items = linea.split("\\s*###\\s*");
@@ -56,13 +56,11 @@ public class Teklatua {
 						nireAktorea.gehituPelikula(listaP.getPeli(items[i]));
 						listaP.getPeli(items[i]).geituAktore(nireAktorea);;
 					}
-					
-					System.out.println(kont++);
 				}
 				listaA.gehituAktorea(nireAktorea);
 			}
 			fitxategia.close();
-			Graph2.getNireGrapfoa(listaA.getLista());
+			
 		}
 		catch(IOException e){
 			e.printStackTrace();
@@ -95,21 +93,25 @@ public class Teklatua {
 		int zenb;
 		
 		System.out.println("1-> Bi aktore konektatuta dauden jakin.");
-		System.out.println("2-> ...");
-
+		System.out.println("2-> Aktore bat zerrendatik kendu.");
+		System.out.println("3-> Pelikula bat zerrendatik kendu.");
+		System.out.println("4-> Aktore bat zerrendan gehitu.");
+		System.out.println("5-> Pelikula bat zerrendan gehitu.");
+		
 		System.out.println("0-> Irten.");
 		
 		
 		zenb = sc.nextInt();
-		if(0>zenb || 2<zenb){
+		if(0>zenb || 5<zenb){
 			System.out.println("Zenbaki okerra sartu da. Aukeratu menuko zenbaki bat:");
 			zenb = zenbakiaSartu();
 		}
 		return zenb;
 	}
 	
-	private void letraSartu(){
+	private void besteEragiketa(){
 		String letra = null;
+		sc = new Scanner(System.in);
 		
 		System.out.println();
 		System.out.println();
@@ -127,7 +129,7 @@ public class Teklatua {
 			}
 			else{
 				System.out.println("Letra ez egokia, berriro erantzun.");
-				letraSartu();
+				besteEragiketa();
 			}
 	}
 	
@@ -135,13 +137,13 @@ public class Teklatua {
 	public void menua(){
 		Scanner sc = new Scanner(System.in);
 		int menuZenb;
-		String menuLetra;
 		
 		System.out.println("Aukeratu egin nahi duzun eragiketa:");
 		System.out.println();
 		menuZenb = zenbakiaSartu();
 		
 		if(menuZenb == 1){
+			Graph2.getNireGrapfoa(listaA.getLista());
 			boolean konektatuak = false;
 			izenakEskatu();
 			konektatuak = Graph2.getNireGrapfoa(listaA.getLista()).konektaturikDaude(izenak[0], izenak[1]);
@@ -152,11 +154,36 @@ public class Teklatua {
 				System.out.println("AKTOREAK EZ DAUDE KONEKTATURIK!");
 			}
 		}
+		
 		if(menuZenb == 2){
-			//EGITEKO
+			String aktoreIzena;
+			System.out.println("Idatzi ezabatu nahi den aktorearen izena:");
+			aktoreIzena = sc.nextLine();
+			listaA.kenduAktorea(aktoreIzena);
 		}
-		sc.nextLine();
-		letraSartu();
+		
+		if(menuZenb == 3){
+			String peliIzen;
+			System.out.println("Idatzi ezabatu nahi den pelikularen izenburua:");
+			peliIzen = sc.nextLine();
+			listaP.pelikulaKendu(peliIzen);
+		}
+		
+		if(menuZenb == 4){
+			String aktoreIzena;
+			System.out.println("Idatzi gehitu nahi den aktorearen izena:");
+			aktoreIzena = sc.nextLine();
+			listaA.gehituAktoreaIzenez(aktoreIzena);
+		}
+		
+		if(menuZenb == 5){
+			String peliIzen;
+			System.out.println("Idatzi gehitu nahi den pelikularen izenburua:");
+			peliIzen = sc.nextLine();
+			Pelikula gehitu = new Pelikula(peliIzen);
+			listaP.addHash(peliIzen, gehitu);
+		}
+		besteEragiketa();
 		
 	}
 	

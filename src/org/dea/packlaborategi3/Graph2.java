@@ -36,22 +36,23 @@ public class Graph2 {
 		// 1. pausoa: th bete
 	 	int kont = 0;
 	 	th = new HashMap<String, Integer>();
-		for(Aktore a: lAktoreak){
-			th.put(a.getIzena(), kont);
-			kont++;
-			for(Pelikula p: a.getListaP()){
+		//for(Aktore a: lAktoreak){
+		for(int o=0; o<lAktoreak.size(); o++){
+	 		Aktore hunekoAktore = lAktoreak.get(o);
+			th.put(hunekoAktore.getIzena(), kont++);
+			for(Pelikula p: hunekoAktore.getListaP()){
 				if(!th.containsKey(p.getIzenburua())){
-					th.put(p.getIzenburua(), kont);
-					kont++;
+					th.put(p.getIzenburua(), kont++);
 				}
 			}
-
+		}
             // 2. pausoa: keys bete
 			keys = new String[th.size()];
 			for(String k: th.keySet()){
-				keys[th.get(k)] = k;	
+				keys[th.get(k)] = k;
 			}
-
+	
+			
             // 3. pausoa: adjLista bete
 			adjList = (ArrayList<Integer>[])new ArrayList[th.size()];
 			for(int i=0; i<th.size(); i++){
@@ -68,8 +69,8 @@ public class Graph2 {
 				}
 			}
 		
-		}
 	}
+	
 	
 	public void print(){
 	   for (int i = 0; i < adjList.length; i++){

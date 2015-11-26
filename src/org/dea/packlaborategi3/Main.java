@@ -9,6 +9,8 @@ public class Main {
 		Teklatua nireTeklatua;
 		nireTeklatua = Teklatua.getTeklatua();
 		nireTeklatua.listaKargatu();
+		System.out.println();
+		System.out.println("DATUAK ONGI KARGATU DIRA.");
 		nireTeklatua.menua();
 	}
 	
