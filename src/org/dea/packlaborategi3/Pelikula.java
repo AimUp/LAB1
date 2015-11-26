@@ -16,6 +16,10 @@ public class Pelikula {
 		return izenburua;
 	}
 	
+	public ArrayList<Aktore> getListaAktore(){
+		return listaA;
+	}
+	
 	public void geituAktore(Aktore pAktor){
 		listaA.add(pAktor);
 	}

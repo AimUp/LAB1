@@ -1,4 +1,4 @@
-package org.dea.packlaborategi3;
+/*package org.dea.packlaborategi3;
 
 import java.util.*;
 
@@ -47,19 +47,26 @@ public class Graph2 {
 			}
 		}
             // 2. pausoa: keys bete
-			keys = new String[th.size()];
-			for(String k: th.keySet()){
+		int as = 0;	
+		keys = new String[th.size()];
+			for(String k: th.keySet()) {
 				keys[th.get(k)] = k;
+				if(as==1521881){
+					as=1521881;
+				}
+				as++;
 			}
-	
 			
             // 3. pausoa: adjLista bete
+		int x=0;
 			adjList = (ArrayList<Integer>[])new ArrayList[th.size()];
 			for(int i=0; i<th.size(); i++){
 				adjList[i] = new ArrayList<Integer>();
 			}
 			for(int i=0; i<lAktoreak.size(); i++){
-				
+				System.out.println(lAktoreak.size());
+				System.out.println(x);
+				x++;
 				ArrayList<Pelikula> nireListaP = lAktoreak.get(i).getListaP();
 				int aktoreZenb = th.get(lAktoreak.get(i).getIzena());
 				for(int j=0; j<nireListaP.size(); j++){
@@ -67,6 +74,7 @@ public class Graph2 {
 					adjList[aktoreZenb].add(pelikulaZenb);
 					adjList[pelikulaZenb].add(aktoreZenb);
 				}
+				int po;
 			}
 		
 	}
@@ -85,20 +93,14 @@ public class Graph2 {
 		boolean aurkitua = false;
 		boolean bukaera = false;
 		Queue<Integer> aztertuGabeak = new LinkedList<Integer>();
-		if(!th.containsKey(a1) || !th.containsKey(a2)){
-			System.out.println("Aktoreetako bat ez dago datu basean, sartu aktoreak berriro.");
-			String[] izenak = new String[2];
-			izenak = Teklatua.getTeklatua().izenakEskatu();
-			konektaturikDaude(izenak[0], izenak[2]);
-		}
-		else{
-			int pos1 = th.get(a1);
-			int pos2 = th.get(a2);
-			boolean[] aztertuak = new boolean[th.size()];
-			Queue<Integer> aztertuGabeak = new Queue<>();
+		int pos1 = th.get(a1);
+		int pos2 = th.get(a2);
+		boolean[] aztertuak = new boolean[th.size()];
+		Queue<Integer> aztertuGabeak = new Queue<>();
 		 // KODEA OSATU
 		}
 		return aurkitua;
 
 	}
 }
+*/
