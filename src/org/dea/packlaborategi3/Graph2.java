@@ -7,7 +7,15 @@ public class Graph2 {
       HashMap<String, Integer> th;
       String[] keys;
       ArrayList<Integer>[] adjList;
-    
+   
+    public boolean aktoreaBadago(String pIzen1, String pIzen2){
+    	boolean badago = false;
+    	if(th.containsKey(pIzen1) && th.containsKey(pIzen2)){
+    		badago = true;
+    	}
+    	return badago;
+    }
+      
 	public void grafoaSortu(ArrayList<Aktore> lAktoreak){
 		// Post: aktoreen zerrendatik grafoa sortzen du
 		//       Adabegiak aktoreen izenak eta pelikulen izenburuak dira 
@@ -61,6 +69,7 @@ public class Graph2 {
 	
 	public boolean konektaturikDaude(String a1, String a2){
 		boolean aurkitua = false;
+		boolean bukaera = false;
 		Queue<Integer> aztertuGabeak = new LinkedList<Integer>();
 		if(!th.containsKey(a1) || !th.containsKey(a2)){
 			System.out.println("Aktoreetako bat ez dago datu basean, sartu aktoreak berriro.");
@@ -72,7 +81,7 @@ public class Graph2 {
 			int pos1 = th.get(a1);
 			int pos2 = th.get(a2);
 			boolean[] aztertuak = new boolean[th.size()];
-		
+			Queue<Integer> aztertuGabeak = new Queue<>();
 		 // KODEA OSATU
 		}
 		return aurkitua;

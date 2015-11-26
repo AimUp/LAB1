@@ -5,7 +5,6 @@ import java.io.*;
 
 public class Teklatua {
 
-	//ATRIBUTUAK
 	private ListaPelikulak listaP;
 	private ListaAktoreak listaA;
 	private static Teklatua nireTeklatua = null;
@@ -61,13 +60,14 @@ public class Teklatua {
 				listaA.gehituAktorea(nireAktorea);
 			}
 			fitxategia.close();
+			metodo2.grafoaSortu(listaA.getLista());
 		}
 		catch(IOException e){
 			e.printStackTrace();
 		}
 	}
 	
-	public String[] izenakEskatu(){
+	public void izenakEskatu(){
 		String izen1, izen2;
 		Scanner sc = new Scanner(System.in);
 		
@@ -79,10 +79,14 @@ public class Teklatua {
 		System.out.println("Orain zartu bigarren aktorearen izena:");
 		
 		izen2 = sc.nextLine();
-		
-		izenak[0] = izen1;
-		izenak[1] = izen2;
-		return izenak;
+		if(!metodo2.aktoreaBadago(izen1, izen2)){
+			izenak[0] = izen1;
+			izenak[1] = izen2;
+		}
+		else{
+			System.out.println("Aktoreetako bat gutxienez ez dago datu basean, idatzi izenak berriro:");
+			izenakEskatu();
+		}
 	}
 	
 	private int zenbakiaSartu(){
@@ -103,21 +107,28 @@ public class Teklatua {
 	}
 	
 	private void letraSartu(){
-		String letra;
+		String letra = null;
 		
+		System.out.println();
+		System.out.println();
 		System.out.println("Beste eragiketarik egin nahi?");
 		System.out.println("B-> Bai");
 		System.out.println("E-> Ez");
 		
 		letra = sc.nextLine();
-		if(letra == "B" || letra == "b"){
+		
+		if(letra.equals("B") || letra.equals("b")){
 			nireTeklatua.menua();
 		}
-		else if(letra != "E" || letra != "e"){
-			System.out.println("Letra ez egokia, berriro erantzun.");
-			letraSartu();
-		}
+		else if(letra.equals("E") || letra.equals("e")){
+				System.out.println("Programa bukatuko da.");
+			}
+			else{
+				System.out.println("Letra ez egokia, berriro erantzun.");
+				letraSartu();
+			}
 	}
+	
 	
 	public void menua(){
 		Scanner sc = new Scanner(System.in);
@@ -129,19 +140,20 @@ public class Teklatua {
 		menuZenb = zenbakiaSartu();
 		
 		if(menuZenb == 1){
-			boolean konektatuak;
-			izenak = izenakEskatu();
+			boolean konektatuak = false;
+			izenakEskatu();
 			konektatuak = metodo2.konektaturikDaude(izenak[0], izenak[1]);
 			if(konektatuak){
 				System.out.println("AKTOREAK KONEKTATURIK DAUDE!");
 			}
 			else{
-				System.out.println("Aktoreak ez daude konektaturik.");
+				System.out.println("AKTOREAK EZ DAUDE KONEKTATURIK!");
 			}
 		}
 		if(menuZenb == 2){
 			//EGITEKO
 		}
+		sc.nextLine();
 		letraSartu();
 		
 	}
