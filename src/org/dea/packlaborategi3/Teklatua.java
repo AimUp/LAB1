@@ -9,8 +9,8 @@ public class Teklatua {
 	private ListaAktoreak listaA;
 	private static Teklatua nireTeklatua = null;
 	private String[] izenak;
-	private Graph1 metodo1;
-	private Graph2 metodo2;
+	//private Graph1 metodo1;
+	//private Graph2 metodo2;
 	private Scanner sc;
 	
 	private Teklatua(){
@@ -30,16 +30,16 @@ public class Teklatua {
 	private String fitxategiarenHelbidea(){
 		String itzuli;
 		System.out.println("Idatzi kargatu nahi den fitxategiaren helbidea:");
-		System.out.println("Adibidez: C://aktore-lista");
+		System.out.println("Adibidez: C://aktore-lista edo /Users/AIMAR/Documents/handia.txt");
 		Scanner helbidea = new Scanner(System.in);
 		itzuli = helbidea.nextLine();
 		return itzuli;
 	}
 	
 	public void listaKargatu(){
-		String pFitxategia = fitxategiarenHelbidea();
+		int kont = 0;
 		try{
-			Scanner fitxategia = new Scanner(new FileReader(pFitxategia));
+			Scanner fitxategia = new Scanner(new FileReader(fitxategiarenHelbidea()));
 			String linea;
 			while(fitxategia.hasNext()){
 				linea = fitxategia.nextLine();
@@ -56,11 +56,13 @@ public class Teklatua {
 						nireAktorea.gehituPelikula(listaP.getPeli(items[i]));
 						listaP.getPeli(items[i]).geituAktore(nireAktorea);;
 					}
+					
+					System.out.println(kont++);
 				}
 				listaA.gehituAktorea(nireAktorea);
 			}
 			fitxategia.close();
-			metodo2.grafoaSortu(listaA.getLista());
+			Graph2.getNireGrapfoa(listaA.getLista());
 		}
 		catch(IOException e){
 			e.printStackTrace();
@@ -79,7 +81,7 @@ public class Teklatua {
 		System.out.println("Orain zartu bigarren aktorearen izena:");
 		
 		izen2 = sc.nextLine();
-		if(!metodo2.aktoreaBadago(izen1, izen2)){
+		if(!Graph2.getNireGrapfoa(listaA.getLista()).aktoreaBadago(izen1, izen2)){
 			izenak[0] = izen1;
 			izenak[1] = izen2;
 		}
@@ -142,7 +144,7 @@ public class Teklatua {
 		if(menuZenb == 1){
 			boolean konektatuak = false;
 			izenakEskatu();
-			konektatuak = metodo2.konektaturikDaude(izenak[0], izenak[1]);
+			konektatuak = Graph2.getNireGrapfoa(listaA.getLista()).konektaturikDaude(izenak[0], izenak[1]);
 			if(konektatuak){
 				System.out.println("AKTOREAK KONEKTATURIK DAUDE!");
 			}

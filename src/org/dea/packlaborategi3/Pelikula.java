@@ -9,6 +9,7 @@ public class Pelikula {
 	
 	public Pelikula(String pIzenburua){
 		izenburua = pIzenburua;
+		listaA = new ArrayList<Aktore>();
 	}
 	
 	public String getIzenburua(){

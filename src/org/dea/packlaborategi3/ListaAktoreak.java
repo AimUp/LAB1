@@ -7,7 +7,7 @@ public class ListaAktoreak {
 	private ArrayList<Aktore> listaA;
 	
 	public ListaAktoreak(){
-		
+		listaA = new ArrayList<Aktore>();
 	}
 	
 	public void gehituAktorea(Aktore pAktor){

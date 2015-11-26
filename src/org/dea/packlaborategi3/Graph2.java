@@ -2,11 +2,24 @@ package org.dea.packlaborategi3;
 
 import java.util.*;
 
+import java.util.*;
 
 public class Graph2 {
       HashMap<String, Integer> th;
       String[] keys;
       ArrayList<Integer>[] adjList;
+      static Graph2 nireGrafoa;
+      
+   private Graph2(ArrayList<Aktore> pL){
+	   grafoaSortu(pL);
+   }
+      
+   public static synchronized Graph2 getNireGrapfoa(ArrayList<Aktore> pL){
+	   if(nireGrafoa == null){
+		   nireGrafoa = new Graph2(pL);
+	   }
+	   return nireGrafoa;
+   }
    
     public boolean aktoreaBadago(String pIzen1, String pIzen2){
     	boolean badago = false;
@@ -16,7 +29,7 @@ public class Graph2 {
     	return badago;
     }
       
-	public void grafoaSortu(ArrayList<Aktore> lAktoreak){
+	private void grafoaSortu(ArrayList<Aktore> lAktoreak){
 		// Post: aktoreen zerrendatik grafoa sortzen du
 		//       Adabegiak aktoreen izenak eta pelikulen izenburuak dira 
 		
@@ -36,7 +49,7 @@ public class Graph2 {
             // 2. pausoa: keys bete
 			keys = new String[th.size()];
 			for(String k: th.keySet()){
-				keys[th.get(k)] = k;
+				keys[th.get(k)] = k;	
 			}
 
             // 3. pausoa: adjLista bete
@@ -45,9 +58,9 @@ public class Graph2 {
 				adjList[i] = new ArrayList<Integer>();
 			}
 			for(int i=0; i<lAktoreak.size(); i++){
-				Aktore nireAktorea = lAktoreak.get(i);
-				ArrayList<Pelikula> nireListaP = nireAktorea.getListaP();
-				int aktoreZenb = th.get(nireAktorea.getIzena());
+				
+				ArrayList<Pelikula> nireListaP = lAktoreak.get(i).getListaP();
+				int aktoreZenb = th.get(lAktoreak.get(i).getIzena());
 				for(int j=0; j<nireListaP.size(); j++){
 					int pelikulaZenb = th.get(nireListaP.get(j).getIzenburua());
 					adjList[aktoreZenb].add(pelikulaZenb);
