@@ -34,46 +34,33 @@ public class Graph2 {
 		// 1. pausoa: th bete
 	 	int kont = 0;
 	 	th = new HashMap<String, Integer>();
-		//for(Aktore a: lAktoreak){
-		for(int o=0; o<lAktoreak.size(); o++){
-	 		Aktore hunekoAktore = lAktoreak.get(o);
-			th.put(hunekoAktore.getIzena(), kont++);
-			for(Pelikula p: hunekoAktore.getListaP()){
+		for(Aktore a: lAktoreak){
+			th.put(a.getIzena(), kont++);
+			for(Pelikula p: a.getListaP()){
 				if(!th.containsKey(p.getIzenburua())){
 					th.put(p.getIzenburua(), kont++);
 				}
 			}
 		}
-            // 2. pausoa: keys bete
-		int as = 0;	
+		
+        // 2. pausoa: keys bete
 		keys = new String[th.size()];
-			for(String k: th.keySet()) {
-				keys[th.get(k)] = k;
-				if(as==1521881){
-					as=1521881;
-				}
-				as++;
-			}
+		for(String k: th.keySet()) keys[th.get(k)] = k;
 			
-            // 3. pausoa: adjLista bete
-		int x=0;
-			adjList = (ArrayList<Integer>[])new ArrayList[th.size()];
-			for(int i=0; i<th.size(); i++){
-				adjList[i] = new ArrayList<Integer>();
+        // 3. pausoa: adjLista bete
+		adjList = (ArrayList<Integer>[])new ArrayList[th.size()];
+		for(int i=0; i<th.size(); i++){
+			adjList[i] = new ArrayList<Integer>();
+		}
+		for(int i=0; i<lAktoreak.size(); i++){
+			ArrayList<Pelikula> nireListaP = lAktoreak.get(i).getListaP();
+			int aktoreZenb = th.get(lAktoreak.get(i).getIzena());
+			for(int j=0; j<nireListaP.size(); j++){
+				int pelikulaZenb = th.get(nireListaP.get(j).getIzenburua());
+				adjList[aktoreZenb].add(pelikulaZenb);
+				adjList[pelikulaZenb].add(aktoreZenb);
 			}
-			for(int i=0; i<lAktoreak.size(); i++){
-				System.out.println(lAktoreak.size());
-				System.out.println(x);
-				x++;
-				ArrayList<Pelikula> nireListaP = lAktoreak.get(i).getListaP();
-				int aktoreZenb = th.get(lAktoreak.get(i).getIzena());
-				for(int j=0; j<nireListaP.size(); j++){
-					int pelikulaZenb = th.get(nireListaP.get(j).getIzenburua());
-					adjList[aktoreZenb].add(pelikulaZenb);
-					adjList[pelikulaZenb].add(aktoreZenb);
-				}
-				int po;
-			}
+		}
 		
 	}
 	
@@ -94,10 +81,7 @@ public class Graph2 {
 		int pos1 = th.get(a1);
 		int pos2 = th.get(a2);
 		boolean[] aztertuak = new boolean[th.size()];
-		Queue<Integer> aztertuGabeak = new Queue<>();
 		 // KODEA OSATU
-		}
 		return aurkitua;
-
-	}
+		}
 }

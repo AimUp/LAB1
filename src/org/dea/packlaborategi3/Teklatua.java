@@ -149,7 +149,7 @@ public class Teklatua {
 			//Graph1.getGraph1().grafoaSortu(listaA.getLista());
 			boolean konektatuak = false;
 			izenakEskatu();
-			konektatuak = Graph2.getNireGrapfoa(listaA.getLista()).konektaturikDaude(izenak[0], izenak[1]);
+			konektatuak = Graph2.getNireGrapfoa(listaA.getLista()).aktoreaBadago(izenak[0], izenak[1]);
 			//konektatuak = Graph1.getGraph1().konektatuta(izenak[0], izenak[1]);
 			if(konektatuak){
 				System.out.println("AKTOREAK KONEKTATURIK DAUDE!");
