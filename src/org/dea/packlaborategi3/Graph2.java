@@ -1,14 +1,12 @@
-/*package org.dea.packlaborategi3;
-
-import java.util.*;
+package org.dea.packlaborategi3;
 
 import java.util.*;
 
 public class Graph2 {
-      HashMap<String, Integer> th;
-      String[] keys;
-      ArrayList<Integer>[] adjList;
-      static Graph2 nireGrafoa;
+      private HashMap<String, Integer> th;
+      private String[] keys;
+      private ArrayList<Integer>[] adjList;
+      private static Graph2 nireGrafoa = null;
       
    private Graph2(ArrayList<Aktore> pL){
 	   grafoaSortu(pL);
@@ -103,4 +101,3 @@ public class Graph2 {
 
 	}
 }
-*/

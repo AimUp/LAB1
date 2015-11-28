@@ -79,7 +79,9 @@ public class Teklatua {
 		System.out.println("Orain zartu bigarren aktorearen izena:");
 		
 		izen2 = sc.nextLine();
-		if(!Graph1.getGraph1().aktoreaBadago(izen1, izen2)){
+		if(!
+				Graph2.getNireGrapfoa(listaA.getLista()).aktoreaBadago(izen1, izen2)){
+				//Graph1.getGraph1().aktoreaBadago(izen1, izen2)){
 			izenak[0] = izen1;
 			izenak[1] = izen2;
 		}
@@ -143,11 +145,12 @@ public class Teklatua {
 		menuZenb = zenbakiaSartu();
 		
 		if(menuZenb == 1){
-			//Graph2.getNireGrapfoa(listaA.getLista());
-			Graph1.getGraph1().grafoaSortu(listaA.getLista());
+			Graph2.getNireGrapfoa(listaA.getLista());
+			//Graph1.getGraph1().grafoaSortu(listaA.getLista());
 			boolean konektatuak = false;
 			izenakEskatu();
-			konektatuak = Graph1.getGraph1().konektatuta(izenak[0], izenak[1]);
+			konektatuak = Graph2.getNireGrapfoa(listaA.getLista()).konektaturikDaude(izenak[0], izenak[1]);
+			//konektatuak = Graph1.getGraph1().konektatuta(izenak[0], izenak[1]);
 			if(konektatuak){
 				System.out.println("AKTOREAK KONEKTATURIK DAUDE!");
 			}
