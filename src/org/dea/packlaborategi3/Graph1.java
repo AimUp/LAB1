@@ -18,35 +18,23 @@ public class Graph1 {
 		return nireGraph1;
 	}
 	
-	public boolean aktoreaBadago(String pIzen1, String pIzen2){
-	    boolean badago = false;
-	    if(g.containsKey(pIzen1) && g.containsKey(pIzen2)){
-	   		badago = true;
-	   	}
-	   	return badago;
-	 }
-	
 	public void grafoaSortu(ArrayList<Aktore> lAktoreak){
 	// Post: aktoreen zerrendatik grafoa sortzen du
 	//       Adabegiak aktoreen izenak eta pelikulen izenburuak dira 
         
             for(Aktore a: lAktoreak){
             	ArrayList<String> stringListaPeli = new ArrayList<String>();
-            	for(int i=0; i < a.getListaP().size(); i++){
-            		Pelikula hunekoa = a.getListaP().get(i);
-            		stringListaPeli.add(hunekoa.getIzenburua());
-            	}
-            	g.put(a.getIzena(), stringListaPeli);
-            	for(int j=0; j<a.getListaP().size(); j++){
-            		if(!g.containsKey(a.getListaP().get(j).getIzenburua())){
-            			Pelikula p = a.getListaP().get(j);
+            	for(Pelikula p : a.getListaP()){
+            		stringListaPeli.add(p.getIzenburua());
+            		if(!g.containsKey(p.getIzenburua())){
             			ArrayList<String> stringListaAktore = new ArrayList<String>();
-            			for(int k=0; k<p.getListaAktore().size(); k++){
-            				stringListaAktore.add(p.getListaAktore().get(k).getIzena());
+            			for(Aktore a2 : p.getListaAktore()){
+            				stringListaAktore.add(a2.getIzena());
             			}
             			g.put(p.getIzenburua(), stringListaAktore);
             		}
             	}
+            	g.put(a.getIzena(), stringListaPeli);
             } 	
 	}
 	
@@ -60,6 +48,14 @@ public class Graph1 {
 			System.out.println();
 		}
 	}
+	
+	public boolean aktoreaBadago(String pIzen1, String pIzen2){
+	    boolean badago = false;
+	    if(g.containsKey(pIzen1) && g.containsKey(pIzen2)){
+	   		badago = true;
+	   	}
+	   	return badago;
+	 }
 	
 	public boolean konektatuta(String a1, String a2){
 		boolean konektatuak = false;
@@ -75,9 +71,7 @@ public class Graph1 {
         	}
         	else{
         		ArrayList<String> listaBerria = g.get(aztertzeko);
-        		String b;
-        		for(int x=0; x<listaBerria.size(); x++){
-        			b = listaBerria.get(x);
+        		for(String b : listaBerria){
         			if(!aztertuGabeak.contains(b) && !aztertuak.containsKey(b)){
         				aztertuGabeak.add(b);
         			}

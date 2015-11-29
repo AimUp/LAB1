@@ -43,7 +43,7 @@ public class Teklatua {
 			System.out.println("Datuak kargatzen diren bitartean itxaron...");
 			while(fitxategia.hasNext()){
 				linea = fitxategia.nextLine();
-				String[] items = linea.split("\\s*###\\s*");
+				String[] items = linea.split("\\s*###");
 				Aktore nireAktorea = new Aktore(items[0]);
 				for(int i=1; i < items.length; i++){
 					if(!listaP.contains(items[i])){
@@ -80,8 +80,8 @@ public class Teklatua {
 		
 		izen2 = sc.nextLine();
 		if(!
-				Graph2.getNireGrapfoa(listaA.getLista()).aktoreaBadago(izen1, izen2)){
-				//Graph1.getGraph1().aktoreaBadago(izen1, izen2)){
+				//Graph2.getNireGrapfoa(listaA.getLista()).aktoreaBadago(izen1, izen2)){
+				Graph1.getGraph1().aktoreaBadago(izen1, izen2)){
 			izenak[0] = izen1;
 			izenak[1] = izen2;
 		}
@@ -145,14 +145,14 @@ public class Teklatua {
 		menuZenb = zenbakiaSartu();
 		
 		if(menuZenb == 1){
-			Graph2.getNireGrapfoa(listaA.getLista());
-			//Graph1.getGraph1().grafoaSortu(listaA.getLista());
+			//Graph2.getNireGrapfoa(listaA.getLista());
+			Graph1.getGraph1().grafoaSortu(listaA.getLista());
 			boolean konektatuak = true;
 			izenakEskatu();
 			int x;
 			x=0;
-			konektatuak = Graph2.getNireGrapfoa(listaA.getLista()).konektaturikDaude(izenak[0], izenak[1]);
-			//konektatuak = Graph1.getGraph1().konektatuta(izenak[0], izenak[1]);
+			//konektatuak = Graph2.getNireGrapfoa(listaA.getLista()).konektaturikDaude(izenak[0], izenak[1]);
+			konektatuak = Graph1.getGraph1().konektatuta(izenak[0], izenak[1]);
 			if(konektatuak){
 				System.out.println("AKTOREAK KONEKTATURIK DAUDE!");
 			}
