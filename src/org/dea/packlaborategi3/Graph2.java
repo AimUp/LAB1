@@ -31,22 +31,25 @@ public class Graph2 {
 		// Post: aktoreen zerrendatik grafoa sortzen du
 		//       Adabegiak aktoreen izenak eta pelikulen izenburuak dira 
 		
+		
+		
 		// 1. pausoa: th bete
-	 	int kont = 0;
-	 	th = new HashMap<String, Integer>();
-		for(Aktore a: lAktoreak){
-			th.put(a.getIzena(), kont++);
-			for(Pelikula p: a.getListaP()){
+		int x=0;
+		th = new HashMap<String, Integer>();
+		for(Aktore a : lAktoreak){
+			th.put(a.getIzena(), x++);
+			for(Pelikula p : a.getListaP()){
 				if(!th.containsKey(p.getIzenburua())){
-					th.put(p.getIzenburua(), kont++);
+					th.put(p.getIzenburua(), x++);				
 				}
 			}
 		}
+
 		
         // 2. pausoa: keys bete
 		keys = new String[th.size()];
 		for(String k: th.keySet()) keys[th.get(k)] = k;
-			
+		
         // 3. pausoa: adjLista bete
 		adjList = (ArrayList<Integer>[])new ArrayList[th.size()];
 		for(int i=0; i<th.size(); i++){
@@ -76,12 +79,25 @@ public class Graph2 {
 	
 	public boolean konektaturikDaude(String a1, String a2){
 		boolean aurkitua = false;
-		boolean bukaera = false;
 		Queue<Integer> aztertuGabeak = new LinkedList<Integer>();
-		int pos1 = th.get(a1);
+		HashMap<Integer, Boolean> aztertuak = new HashMap<Integer,Boolean>();
+		int hunekoa = th.get(a1);
 		int pos2 = th.get(a2);
-		boolean[] aztertuak = new boolean[th.size()];
-		 // KODEA OSATU
+		aztertuGabeak.add(hunekoa);
+		while(!aurkitua && !aztertuGabeak.isEmpty()){
+			hunekoa = aztertuGabeak.remove();
+			aztertuak.put(hunekoa,true);
+			if(hunekoa==pos2){
+				aurkitua = true;
+			}
+			else{
+				for(int x=0; x<adjList[hunekoa].size(); x++){
+					if(!aztertuak.containsKey(adjList[hunekoa].get(x))){
+						aztertuGabeak.add(adjList[hunekoa].get(x));
+					}
+				}
+			}
+		}
 		return aurkitua;
 		}
 }
