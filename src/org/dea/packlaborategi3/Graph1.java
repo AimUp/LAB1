@@ -1,7 +1,10 @@
 package org.dea.packlaborategi3;
 
-import java.util.*;
- 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.Queue;
+
 public class Graph1 {
 
 	HashMap<String, ArrayList<String>> g;
@@ -18,6 +21,7 @@ public class Graph1 {
 		return nireGraph1;
 	}
 	
+
 	public void grafoaSortu(ArrayList<Aktore> lAktoreak){
 	// Post: aktoreen zerrendatik grafoa sortzen du
 	//       Adabegiak aktoreen izenak eta pelikulen izenburuak dira 
@@ -70,12 +74,12 @@ public class Graph1 {
         		konektatuak=true;
         	}
         	else{
-        		ArrayList<String> listaBerria = g.get(aztertzeko);
+        		ArrayList<String> listaBerria = g.get(aztertzeko);	
         		for(String b : listaBerria){
         			if(!aztertuGabeak.contains(b) && !aztertuak.containsKey(b)){
-        				aztertuGabeak.add(b);
+        			aztertuGabeak.add(b);
         			}
-        		}        			
+        		}      
         	}
         }
 		return konektatuak;

@@ -28,7 +28,7 @@ public class Teklatua {
 	private String fitxategiarenHelbidea(){
 		String itzuli;
 		System.out.println("Idatzi kargatu nahi den fitxategiaren helbidea:");
-		System.out.println("Adibidez: C://aktore-lista edo /Users/AIMAR/Documents/handia.txt");
+		System.out.println("Adibidez: C://Users/XXX/Documents/handia.txt edo /Users/AIMAR/Documents/handia.txt");
 		Scanner helbidea = new Scanner(System.in);
 		itzuli = helbidea.nextLine();
 		return itzuli;
