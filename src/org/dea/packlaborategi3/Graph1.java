@@ -64,7 +64,7 @@ public class Graph1 {
 		HashMap<String, Boolean> aztertuak = new HashMap<String, Boolean>();
 		aztertuGabeak.add(a1);
         while(!konektatuak && !aztertuGabeak.isEmpty()){
-        	aztertzeko = aztertuGabeak.remove();
+        	aztertzeko = aztertuGabeak.poll();
         	aztertuak.put(aztertzeko, true);
         	if(aztertzeko.equals(a2)){
         		konektatuak=true;

@@ -44,10 +44,9 @@ public class Graph2 {
 				}
 			}
 		}
-
 		
         // 2. pausoa: keys bete
-		keys = new String[th.size()];
+		keys = new String[x];
 		for(String k: th.keySet()) keys[th.get(k)] = k;
 		
         // 3. pausoa: adjLista bete
