@@ -38,8 +38,11 @@ public class Graph1 {
             			g.put(p.getIzenburua(), stringListaAktore);
             		}
             	}
+            	
             	g.put(a.getIzena(), stringListaPeli);
             } 	
+     
+            System.out.println("");
 	}
 	
 	public void print(){
@@ -67,17 +70,18 @@ public class Graph1 {
 		Queue<String> aztertuGabeak = new LinkedList<String>();
 		HashMap<String, Boolean> aztertuak = new HashMap<String, Boolean>();
 		aztertuGabeak.add(a1);
+    	aztertuak.put(a1, true);
         while(!konektatuak && !aztertuGabeak.isEmpty()){
         	aztertzeko = aztertuGabeak.poll();
-        	aztertuak.put(aztertzeko, true);
         	if(aztertzeko.equals(a2)){
         		konektatuak=true;
         	}
         	else{
-        		ArrayList<String> listaBerria = g.get(aztertzeko);	
+        		ArrayList<String> listaBerria = g.get(aztertzeko);
         		for(String b : listaBerria){
-        			if(!aztertuGabeak.contains(b) && !aztertuak.containsKey(b)){
+        			if(!aztertuak.containsKey(b)){
         			aztertuGabeak.add(b);
+                	aztertuak.put(b, true);
         			}
         		}      
         	}

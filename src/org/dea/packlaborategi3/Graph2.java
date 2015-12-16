@@ -31,8 +31,6 @@ public class Graph2 {
 		// Post: aktoreen zerrendatik grafoa sortzen du
 		//       Adabegiak aktoreen izenak eta pelikulen izenburuak dira 
 		
-		
-		
 		// 1. pausoa: th bete
 		int x=0;
 		th = new HashMap<String, Integer>();
@@ -50,15 +48,15 @@ public class Graph2 {
 		for(String k: th.keySet()) keys[th.get(k)] = k;
 		
         // 3. pausoa: adjLista bete
-		adjList = (ArrayList<Integer>[])new ArrayList[th.size()];
-		for(int i=0; i<th.size(); i++){
+		adjList = (ArrayList<Integer>[])new ArrayList[x];
+		for(int i=0; i<x; i++){
 			adjList[i] = new ArrayList<Integer>();
 		}
-		for(int i=0; i<lAktoreak.size(); i++){
-			ArrayList<Pelikula> nireListaP = lAktoreak.get(i).getListaP();
-			int aktoreZenb = th.get(lAktoreak.get(i).getIzena());
-			for(int j=0; j<nireListaP.size(); j++){
-				int pelikulaZenb = th.get(nireListaP.get(j).getIzenburua());
+		for(Aktore a :lAktoreak){
+			ArrayList<Pelikula> nireListaP = a.getListaP();
+			int aktoreZenb = th.get(a.getIzena());
+			for(Pelikula p:nireListaP){
+				int pelikulaZenb = th.get(p.getIzenburua());
 				adjList[aktoreZenb].add(pelikulaZenb);
 				adjList[pelikulaZenb].add(aktoreZenb);
 			}
@@ -83,9 +81,9 @@ public class Graph2 {
 		int hunekoa = th.get(a1);
 		int pos2 = th.get(a2);
 		aztertuGabeak.add(hunekoa);
+		aztertuak.put(hunekoa,true);
 		while(!aurkitua && !aztertuGabeak.isEmpty()){
 			hunekoa = aztertuGabeak.remove();
-			aztertuak.put(hunekoa,true);
 			if(hunekoa==pos2){
 				aurkitua = true;
 			}
@@ -93,8 +91,10 @@ public class Graph2 {
 				for(int x=0; x<adjList[hunekoa].size(); x++){
 					if(!aztertuak.containsKey(adjList[hunekoa].get(x))){
 						aztertuGabeak.add(adjList[hunekoa].get(x));
+						aztertuak.put(adjList[hunekoa].get(x),true);
 					}
 				}
+				
 			}
 		}
 		return aurkitua;
