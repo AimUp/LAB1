@@ -61,7 +61,6 @@ public class Graph2 {
 				adjList[pelikulaZenb].add(aktoreZenb);
 			}
 		}
-		
 	}
 	
 	
